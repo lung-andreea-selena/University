@@ -1,0 +1,40 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit 
+     6                                  import exit msvcrt.dll  
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10                                  
+    11                                  
+    12                                  
+    13                                  segment code use32 class=code
+    14                                  start:
+    15                                      
+    16 00000000 55                          push ebp; saving the caller’s  stackframe base for further being able to restore it
+    17                                  
+    18 00000001 89E5                    mov ebp,esp ; initialising the base of the new stack frame for the currently  executing 
+    19                                  
+    20                                  ; procedure AddTwo  (see the  picture below which illustrates exactly 
+    21                                  
+    22                                  ; this described situation)
+    23                                  
+    24 00000003 8B450C                  mov eax,[ebp + 12] ; transferring into EAX the value of the second parameter passed 
+    25                                  
+    26                                  ; on to the stack by the caller BEFORE  the new stackframe takes 
+    27                                  
+    28                                  ; the run time control
+    29                                  
+    30 00000006 034508                  add eax,[ebp + 8] ; adding to EAX the first parameter
+    31                                  
+    32 00000009 5D                      pop ebp ; restoring the caller stackframe  as being the new currently executing one 
+    33                                  
+    34 0000000A C3                      ret ; going back immediately to the point of call for continuing the execution 
+    35                                  
+    36                                    ;  of the program
+    37                                      
+    38                                  
+    39 0000000B 6A00                        push dword 0 
+    40 0000000D FF15[00000000]              call [exit] 
