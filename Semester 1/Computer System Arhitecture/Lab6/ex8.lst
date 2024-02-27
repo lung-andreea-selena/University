@@ -1,0 +1,54 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit
+     5                                  import exit msvcrt.dll
+     6                                  
+     7                                  segment data use32 class=data
+     8 00000000 785634124D3C2C1A76-         s dd 12345678h, 1A2C3C4Dh, 98FCDC76h
+     8 00000009 DCFC98             
+     9                                      len equ ($-s)/4;because we work with each doubleword
+    10 0000000C 00<rept>                    d times len db 0;we need only a byte from each doubleword
+    11                                      
+    12                                  ;8. A list of doublewords is given. Obtain the list made out of the low bytes of the high words 
+    13                                  ;of each doubleword from the given list with the property that these bytes are palindromes in base 10
+    14                                  
+    15                                  segment code use32 class=code
+    16                                      start:
+    17 00000000 B903000000                  mov ecx, len
+    18 00000005 BE[00000000]                mov esi, s
+    19 0000000A BF[0C000000]                mov edi, d
+    20 0000000F FC                          cld ;we work from left to right 
+    21 00000010 E32E                        jecxz final ;jump if ecx =0
+    22                                      while_1:
+    23 00000012 66AD                            lodsw   ;first we take 5678 (for first case) and move to ax but then ignore it
+    24 00000014 66AD                            lodsw   ; ax = high word
+    25 00000016 B400                            mov ah, 0 ; in ax we be left only the low bytes from the word
+    26 00000018 88C6                            mov dh, al  ; dh - copy of al in al are the low bytes from word
+    27 0000001A B364                            mov bl, 100d
+    28 0000001C F6F3                            div bl  ; al = cifra sutelor, ah = restul(cifra zecilor si cifra unitatilor)
+    29 0000001E 88C2                            mov dl, al  ; dl - cifra sutelor
+    30 00000020 88E0                            mov al, ah
+    31 00000022 B400                            mov ah, 0; in ax will be cifra zecilor si cifra unitatilor
+    32 00000024 B30A                            mov bl, 10d
+    33 00000026 F6F3                            div bl  ; al = cifra zecilor, ah = cifra unitatilor
+    34 00000028 80FA00                          cmp dl, 0 ; compare if the number in base 10 has 3 digits, if dl=0 then we have only 2 digits or less
+    35 0000002B 7406                            je two_digits ;jump if equal to two_digits
+    36 0000002D 38E2                            cmp dl, ah ;compare cifra sutelor with cifra unitatilor
+    37 0000002F 750D                            jne next ;if they are not equal=> go to the next number
+    38 00000031 7408                            je copy ;if they are equal=> palindrome=> copy in d
+    39                                          two_digits: ;in case it has two digits
+    40 00000033 3C00                                cmp al, 0; if al=0=> it has only 1 digit => palindrome
+    41 00000035 7404                                je copy ;copy in d if al=0
+    42 00000037 38E0                                cmp al, ah ;if al!=0 compare cifra zecilor cu cifra unitatilor
+    43 00000039 7503                                jne next ; if they are not equal=> !=palindrome=>next
+    44                                          copy:
+    45 0000003B 88F0                            mov al, dh ;we move the copy back in al because is palindrome
+    46 0000003D AA                              stosb ; = mov [edi],al and inc edi; in edi puts al
+    47                                          next:
+    48 0000003E E2D2                            loop while_1
+    49                                          
+    50                                      
+    51                                      final:
+    52 00000040 6A00                        push dword 0
+    53 00000042 FF15[00000000]              call [exit]
