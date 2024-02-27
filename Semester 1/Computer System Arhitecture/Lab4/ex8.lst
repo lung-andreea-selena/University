@@ -1,0 +1,43 @@
+     1                                  ;Given the words A and B, compute the byte C as follows:
+     2                                  ;the bits 0-5 are the same as the bits 5-10 of A
+     3                                  ;the bits 6-7 are the same as the bits 1-2 of B.
+     4                                  ;Compute the doubleword D as follows:
+     5                                  ;the bits 8-15 are the same as the bits of C
+     6                                  ;the bits 0-7 are the same as the bits 8-15 of B
+     7                                  ;the bits 24-31 are the same as the bits 0-7 of A
+     8                                  ;the bits 16-23 are the same as the bits 8-15 of A.
+     9                                  
+    10                                  bits 32 
+    11                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+    12                                  global start        
+    13                                  
+    14                                  ; declare external functions needed by our program
+    15                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    16                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    17                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    18                                  
+    19                                  ; our data is declared here (the variables needed by our program)
+    20                                  segment data use32 class=data
+    21                                      
+    22 00000000 D69C                        a dw 1001110011010110b
+    23 00000002 35AE                        b dw 1010111000110101b
+    24 00000004 <res 00000001>              c resb 1
+    25 00000005 <res 00000004>              d resd 1
+    26                                  
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                      ;the bits 0-5 are the same as the bits 5-10 of A
+    31 00000000 66A1[00000000]              mov ax,[a]
+    32 00000006 6625E007                    and ax, 0000011111100000b
+    33 0000000A B105                        mov cl,5
+    34 0000000C 66D3E8                      shr ax,cl;in al we have first 6 bits same as 5-10 A
+    35 0000000F 0805[04000000]              or [c],al
+    36                                      ;the bits 6-7 are the same as the bits 1-2 of B.
+    37 00000015 66A1[02000000]              mov ax,[b]
+    38 0000001B 6683E006                    and ax,0000000000000110b
+    39 0000001F B105                        mov cl,5
+    40 00000021 66D3E0                      shl ax,cl
+    41                                      
+    42 00000024 6A00                        push    dword 0      ; push the parameter for exit onto the stack
+    43 00000026 FF15[00000000]              call    [exit]       ; call exit to terminate the program
