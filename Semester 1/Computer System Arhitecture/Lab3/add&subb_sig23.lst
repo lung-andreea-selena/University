@@ -1,0 +1,45 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit 
+     6                                  import exit msvcrt.dll  
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10                                  
+    11                                  ;a + b + c + d - (a + b) - signed rep
+    12                                  ;a - byte, b - word, c - double word, d - qword 
+    13                                  
+    14 00000000 02                      a db 2
+    15 00000001 0100                    b dw 1
+    16 00000003 03000000                c dd 3
+    17 00000007 0500000000000000        d dq 5
+    18 0000000F <res 00000008>          x resq 1
+    19                                  
+    20                                  segment code use32 class=code
+    21                                  start:
+    22                                      
+    23                                      
+    24 00000000 A0[00000000]                mov al,[a]
+    25 00000005 6698                        cbw
+    26 00000007 660305[01000000]            add ax,[b]
+    27 0000000E 6689C3                      mov bx, ax
+    28 00000011 A0[00000000]                mov al,[a]
+    29 00000016 6698                        cbw
+    30 00000018 660305[01000000]            add ax,[b]
+    31 0000001F 98                          cwde
+    32 00000020 0305[03000000]              add eax,[c]
+    33 00000026 99                          cdq
+    34 00000027 0305[07000000]              add eax, dword[d]
+    35 0000002D 0315[0B000000]              add edx, dword[d+4]
+    36 00000033 A3[0F000000]                mov dword [x], eax
+    37 00000038 8915[13000000]              mov dword [x+4], edx
+    38 0000003E 6689D8                      mov ax,bx
+    39 00000041 98                          cwde
+    40 00000042 99                          cdq
+    41 00000043 2905[0F000000]              sub dword[x],eax
+    42 00000049 1915[13000000]              sbb dword[x+4],edx
+    43                                  
+    44 0000004F 6A00                        push dword 0 
+    45 00000051 FF15[00000000]              call [exit]

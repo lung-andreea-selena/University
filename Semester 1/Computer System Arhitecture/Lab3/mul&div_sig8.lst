@@ -1,0 +1,60 @@
+     1                                  bits 32 
+     2                                  
+     3                                  global start
+     4                                  
+     5                                  extern exit 
+     6                                  import exit msvcrt.dll  
+     7                                  
+     8                                  
+     9                                  segment data use32 class=data
+    10                                  
+    11                                  ;1/a+200*b-c/(d+1)+x/a-e signed rep
+    12                                  ;a,b-word; c,d-byte; e-doubleword; x-qword
+    13                                  
+    14 00000000 0200                    a dw 2
+    15 00000002 0300                    b dw 3
+    16 00000004 06                      c db 6
+    17 00000005 01                      d db 1
+    18 00000006 0400                    e dw 4
+    19 00000008 0800000000000000        x dq 8
+    20 00000010 <res 00000004>          y resd 1
+    21                                  
+    22                                  segment code use32 class=code
+    23                                  start:
+    24                                      
+    25 00000000 66B80100                    mov ax,1
+    26 00000004 6699                        cwd ; DX:AX=1
+    27 00000006 66F73D[00000000]            idiv word [a] ;catul in ax si restul in dx
+    28 0000000D 98                          cwde
+    29 0000000E A3[10000000]                mov [y],eax
+    30 00000013 66B8C800                    mov ax,200
+    31 00000017 66F72D[02000000]            imul word[b];is on dx:ax
+    32 0000001E 6652                        push dx
+    33 00000020 6650                        push ax
+    34 00000022 58                          pop eax
+    35 00000023 0105[10000000]              add [y],eax
+    36                                      ;c/(d+1)
+    37 00000029 A0[04000000]                mov al,[c]
+    38 0000002E 6698                        cbw
+    39 00000030 8A1D[05000000]              mov bl,[d]
+    40 00000036 80C301                      add bl,1
+    41 00000039 F6FB                        idiv bl
+    42 0000003B 6698                        cbw
+    43 0000003D 98                          cwde
+    44 0000003E 2905[10000000]              sub [y],eax
+    45 00000044 66A1[00000000]              mov ax,[a]
+    46 0000004A 98                          cwde
+    47 0000004B 89C3                        mov ebx,eax
+    48 0000004D A1[08000000]                mov eax,dword [x]
+    49 00000052 8B15[0C000000]              mov edx, dword [x+4]
+    50 00000058 F7FB                        idiv ebx
+    51 0000005A 0105[10000000]              add [y],eax
+    52 00000060 A1[06000000]                mov eax,[e]
+    53 00000065 2905[10000000]              sub [y],eax
+    54                                      
+    55                                      
+    56                                      
+    57                                      
+    58                                  
+    59 0000006B 6A00                        push dword 0 
+    60 0000006D FF15[00000000]              call [exit]
