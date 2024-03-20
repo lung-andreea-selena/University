@@ -1,0 +1,19 @@
+%aparitie(E-number,L-list)
+%flow model(i,i)
+ 
+aparitie(E,[E|_]).
+aparitie(E,[_|T]):-aparitie(E,T).
+ 
+%intersection(S-list,SS-list,R-result list)
+%flow model (i,i,o)
+ 
+intersection(_,[],[]).
+intersection([],_,[]).
+intersection([],[],[]).
+ 
+intersection([H|T],SS,[H|R]):-
+    aparitie(H,SS),
+    intersection(T,SS,R).
+intersection([H|T],SS,R):-
+    not(aparitie(H,SS)),
+    intersection(T,SS,R).

@@ -1,0 +1,9 @@
+% create a list of numbers from M to N (createList/3)
+% flow model: (i, i, o)
+
+createList(M, N, []) :- M > N.
+createList(M, N, [M]) :- M =:= N.
+createList(M, N, [M|Rest]) :-
+    M < N,
+    M1 is M + 1,
+    createList(M1, N, Rest).

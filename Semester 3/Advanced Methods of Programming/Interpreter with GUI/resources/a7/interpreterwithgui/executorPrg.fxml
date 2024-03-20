@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="510.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="a7.interpreterwithgui.gui.PrgExecutorController">
+   <BorderPane prefHeight="557.0" prefWidth="815.0">
+      <center>
+         <HBox prefHeight="461.0" prefWidth="667.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="558.0" prefWidth="152.0">
+               <Label prefHeight="18.0" prefWidth="78.0" text="Heap Table"/>
+               <TableView fx:id="HeapTableTableView" prefHeight="200.0" prefWidth="162.0">
+                  <columns>
+                     <TableColumn fx:id="AddressColumn" prefWidth="75.0" text="Address"/>
+                     <TableColumn fx:id="ValueColumn" prefWidth="75.0" text="Value"/>
+                  </columns>
+               </TableView>
+            </VBox>
+            <VBox prefHeight="558.0" prefWidth="145.0">
+               <Label text="Out"/>
+               <ListView fx:id="OutListView" prefHeight="200.0" prefWidth="200.0"/>
+            </VBox>
+            <VBox prefHeight="558.0" prefWidth="139.0">
+               <Label prefHeight="18.0" prefWidth="61.0" text="File Table"/>
+               <ListView fx:id="FileTableListView" prefHeight="200.0" prefWidth="200.0"/>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <Label prefHeight="18.0" prefWidth="70.0" text="Prg State ids"/>
+               <ListView fx:id="PrgStatesIdsListView" prefHeight="200.0" prefWidth="200.0"/>
+            </VBox>
+            <VBox prefHeight="558.0" prefWidth="153.0">
+               <Label text="SymTable"/>
+               <TableView fx:id="SymbolTableTableView" prefHeight="200.0" prefWidth="200.0">
+                  <columns>
+                     <TableColumn fx:id="VarNameColumn" prefWidth="75.0" text="Var Name"/>
+                     <TableColumn fx:id="VarValueColumn" prefWidth="75.0" text="Value"/>
+                  </columns>
+               </TableView>
+            </VBox>
+            <VBox prefHeight="558.0" prefWidth="126.0">
+               <Label text="ExeStack"/>
+               <ListView fx:id="ExeStackListView" prefHeight="200.0" prefWidth="200.0"/>
+            </VBox>
+         </HBox>
+      </center>
+      <bottom>
+         <HBox alignment="CENTER" prefHeight="161.0" prefWidth="815.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="TextViewNoOfPrgState">
+               <HBox.margin>
+                  <Insets right="50.0"/>
+               </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#runOneStep" text="Button"/>
+         </HBox>
+      </bottom>
+   </BorderPane>
+</AnchorPane>
