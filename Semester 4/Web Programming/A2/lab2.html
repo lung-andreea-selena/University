@@ -1,0 +1,62 @@
+<!DOCTYPE html> <
+<html>
+  <head>
+    <style>
+      body {
+        background-color: rgb(173, 214, 250);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        position: relative;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        background-color: #ddd;
+        border-bottom: 1px solid #4434ed;
+      }
+
+      th {
+        background-color: #828080;
+      }
+
+      .collapsible {
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+      }
+      .collapsible:hover {
+        background-color: #555;
+        padding: 0 18px;
+        min-height: 10;
+        overflow: hidden;
+        transition: min-height 0.2s ease-in;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+        </tr>
+      </thead>
+      <tbody class="collapsible">
+        <tr>
+          <td>Lung</td>
+          <td>Andreea</td>
+        </tr>
+        <tr>
+          <td>Ala</td>
+          <td>Bala</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
