@@ -1,0 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+img{
+    width:100%;
+    height:100%;
+}
+.desktop {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+}
+#desktop1 {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+#desktop2 {
+    background-color: rgba(0, 255, 0, 0.5);
+}
+#desktop3 {
+    background-color: rgba(0, 0, 255, 0.5);
+}
+#desktop4 {
+    background-color: rgba(255, 255, 0, 0.5);
+}

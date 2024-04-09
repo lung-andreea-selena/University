@@ -1,0 +1,10 @@
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\bin\Debug\A1.exe.config
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\bin\Debug\A1.exe
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\bin\Debug\A1.pdb
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.AssemblyReference.cache
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.Form1.resources
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.Properties.Resources.resources
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.GenerateResource.cache
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.CoreCompileInputs.cache
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.exe
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.pdb

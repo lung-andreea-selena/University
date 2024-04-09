@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sort Numbers and Display in Table</title>
+        <script type="text/javascript">
+            function SortAndDisplay()
+            {
+                var input=document.getElementById("inputNumbers").value.trim();
+                var numbersStr=input.split(' ');
+
+                if(!validate(numbersStr)){
+                    console.log("ERROR");
+                    alert('Error! Please enter numbers separated by spaces');
+                    return;
+                }
+                var integers=numbersStr.map(function(str){
+                    return parseInt(str);
+                });
+                
+                integers.sort(function(a,b){
+                    return a-b; //if negtive a before b and positive otherwise
+                });
+
+                var table = document.getElementById("tableNumbers");
+                table.innerHTML='';
+                var nrCol=5;
+                var nrRows=Math.ceil(integers.length/nrCol);
+
+                for(var i=0;i<nrRows;i++)
+                {
+                    var row=table.insertRow();
+                    for(var j=0;j<nrCol;j++)
+                    {
+                        var index=i*nrCol+j;
+                        if(index<integers.length)
+                        {
+                            var cell=row.insertCell();
+                            cell.textContent=integers[index];
+                        }
+                        
+                    }
+                }
+            }
+            function validate(numbers)
+            {
+                for(var i=0;i<numbers.length;i++)
+                {
+                    if(isNaN(numbers[i]))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+        </script>
+    </head>
+    <body>
+        <input type="text" id="inputNumbers">
+        <input type="button" value="Send and Display" onclick="SortAndDisplay()">
+        <table id="tableNumbers"></table>
+    </body>
+</html>
