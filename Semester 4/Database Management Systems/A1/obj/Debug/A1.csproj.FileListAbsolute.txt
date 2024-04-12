@@ -8,3 +8,6 @@ C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.GenerateRes
 C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.CoreCompileInputs.cache
 C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.exe
 C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.pdb
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Lung\OneDrive\Desktop\Facultate\DBMS\A1\obj\Debug\A1.csproj.Up2Date

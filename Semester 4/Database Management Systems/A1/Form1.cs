@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace A1
 {
     public partial class Form1 : Form
     {
         SqlConnection connection;
-        SqlDataAdapter dataAdapterOrganization,dataAdapterDepartment;
+        SqlDataAdapter dataAdapterParent,dataAdapterChild;
         DataSet dataSet;
         SqlCommandBuilder commandBuilder;
-        BindingSource bsOrganization, bsDepartment;
+        BindingSource bsParent, bsChild;
         public Form1()
         {
             InitializeComponent();
@@ -30,33 +31,40 @@ namespace A1
         {
             try
             {
-                connection = new SqlConnection(getConnectionString());
+                string con = ConfigurationManager.ConnectionStrings["cn"].ConnectionString;
+                connection = new SqlConnection(con);
                 dataSet = new DataSet();
-                dataAdapterOrganization = new SqlDataAdapter("select * from Organization", connection);
-                dataAdapterDepartment = new SqlDataAdapter("select * from Department", connection);
-                commandBuilder = new SqlCommandBuilder(dataAdapterDepartment); //because we are modifing only the child table
+                string selectparent = ConfigurationManager.AppSettings["selectParent"];
+                string selectchild = ConfigurationManager.AppSettings["selectChild"];
+                dataAdapterParent = new SqlDataAdapter(selectparent, connection);
+                dataAdapterChild = new SqlDataAdapter(selectchild, connection);
+                commandBuilder = new SqlCommandBuilder(dataAdapterChild); //because we are modifing only the child table
 
                 //we fill the dataset
-                dataAdapterDepartment.Fill(dataSet, "Department");
-                dataAdapterOrganization.Fill(dataSet, "Organization");
+                string parentname = ConfigurationManager.AppSettings["ParentTableName"];
+                string childname = ConfigurationManager.AppSettings["ChildTableName"];
+                string parentid = ConfigurationManager.AppSettings["ParentID"];
+                string foreignkey = ConfigurationManager.AppSettings["ForeignKeyName"];
+                dataAdapterChild.Fill(dataSet, childname);
+                dataAdapterParent.Fill(dataSet, parentname);
 
                 //define dataRelation between the tables
-                DataRelation dr = new DataRelation("FK_Organization_Department", dataSet.Tables["Organization"].Columns["OId"], dataSet.Tables["Department"].Columns["OId"]);
+                DataRelation dr = new DataRelation(foreignkey, dataSet.Tables[parentname].Columns[parentid], dataSet.Tables[childname].Columns[parentid]);
                 dataSet.Relations.Add(dr);
 
                 //define 2 binding sources
                 //the binding source is going to be associated with the content of the DataSet and aslo with the DataGridView in which the dataset is displayed
-                bsOrganization = new BindingSource();
-                bsDepartment = new BindingSource();
+                bsParent = new BindingSource();
+                bsChild = new BindingSource();
 
                 //the connection between the tables (when i click in the datagridview of the Project to show the relevant children)
-                bsOrganization.DataSource = dataSet;
-                bsOrganization.DataMember = "Organization";
-                bsDepartment.DataSource = bsOrganization;
-                bsDepartment.DataMember = "FK_Organization_Department";
+                bsParent.DataSource = dataSet;
+                bsParent.DataMember = parentname;
+                bsChild.DataSource = bsParent;
+                bsChild.DataMember = foreignkey;
 
-                ChildTable.DataSource = bsDepartment;
-                ParentTable.DataSource = bsOrganization;
+                ChildTable.DataSource = bsChild;
+                ParentTable.DataSource = bsParent;
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -68,7 +76,8 @@ namespace A1
             //to delete -> select the line and press delete from keybord
             try
             {
-                dataAdapterDepartment.Update(dataSet, "Department");
+                string childname = ConfigurationSettings.AppSettings["ChildTableName"];
+                dataAdapterChild.Update(dataSet, childname);
                 MessageBox.Show("Update successful.");
             }
             catch (Exception ex)
@@ -85,10 +94,6 @@ namespace A1
             MessageBox.Show("Error! Please provide valid input types", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private static String getConnectionString()
-        {
-            return "Data Source=DESKTOP-TK1OG7J\\SQLEXPRESS;Initial Catalog=\"Student Organizations\"; Integrated Security = true";
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
