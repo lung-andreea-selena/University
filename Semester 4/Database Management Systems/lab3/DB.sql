@@ -1,0 +1,66 @@
+create database Stud_Org
+go
+use Stud_Org
+
+DROP TABLE WorksOn
+DROP TABLE Task
+DROP TABLE MadeBy
+DROP TABLE Project
+DROP TABLE PartOf
+DROP TABLE Department
+DROP TABLE Volunteering
+DROP TABLE Student
+DROP TABLE Organization
+
+go
+CREATE TABLE Organization
+	(OId INT PRIMARY KEY IDENTITY(100,1),
+	NameO VARCHAR(50),
+	)
+
+CREATE TABLE Student
+	(SId INT PRIMARY KEY IDENTITY(200,1),
+	NameS VARCHAR(50),
+	Telephone INT NULL,
+	PointsContribution INT,
+	Age INT)
+
+CREATE TABLE Volunteering
+	(OId INT REFERENCES Organization(OId),
+	SId INT REFERENCES Student(SId),
+	PRIMARY KEY(OId,SId),
+	Since INT)
+
+CREATE TABLE Department
+	(DId INT PRIMARY KEY IDENTITY(300,1),
+	NameD VARCHAR(50),
+	MinimAge INT,
+	OId INT REFERENCES Organization(OId))
+
+CREATE TABLE PartOf
+	(DId INT REFERENCES Department(DId),
+	SId INT REFERENCES Student(SId),
+	PRIMARY KEY(DId,SId),
+	Since INT)
+
+CREATE TABLE Project
+	(PId INT PRIMARY KEY IDENTITY(400,1),
+	NameP VARCHAR(50),
+	DateP DATE)
+
+CREATE TABLE MadeBy
+	(DId INT REFERENCES Department(DId),
+	PID INT REFERENCES Project(PId),
+	PRIMARY KEY(DId,PId))
+
+CREATE TABLE Task
+	(TId INT PRIMARY KEY IDENTITY(500,1),
+	DescriptionT VARCHAR(100),
+	Deadline DATE,
+	StatusT VARCHAR(20),
+	PId INT REFERENCES Project(PId))
+
+CREATE TABLE WorksOn
+	(TId INT REFERENCES Task(TId),
+	SId INT REFERENCES Student(SId),
+	PRIMARY KEY (TId,SId))
