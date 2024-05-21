@@ -1,0 +1,68 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(sea.jpg);
+}
+
+.container {
+    height: fit-content;
+    width: 50%;
+    border-radius: 10px;
+    background: skyblue;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+h1 {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+p {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input {
+    width: 100%;
+    border: 2px solid deepskyblue;
+    border-radius: 4px;
+    color: black;
+    margin: 3px;
+    padding: 3px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 20px;
+    border: 2px solid steelblue;
+    border-radius: 7px;
+    background: rgb(85, 163, 194);
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+}
+
+.button_container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+}

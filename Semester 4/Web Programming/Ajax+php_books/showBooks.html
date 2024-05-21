@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My personal library</title>
+    <link rel="stylesheet" type="text/css" href="showBooks.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="showBooks.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="details">
+        <h1>Books</h1>
+
+        <input type="text" placeholder="Genre:" id="genre"/>
+
+        <input type="text" placeholder="Author:" id="author"/>
+
+        <button class="add" onclick="window.location.href='addBook.html'">
+            Add new book
+        </button>
+        <p id="info">hi</p>
+    </div>
+    <table>
+        <tr>
+            <th> AUTHOR </th>
+            <th> TITLE </th>
+            <th> PAGES </th>
+            <th> GENRE </th>
+            <th> IS LENT </th>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Book</title>
+    <link rel="stylesheet" type="text/css" href="addBook.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Create Book</h1>
+    <p><b>Please fill this form and submit to add the book to the database.</b></p>
+
+    <form action="addBook.php" method="post">
+        <input type="text" name="author" placeholder="Author:"> <br>
+        <input type="text" name="title" placeholder="Title:"> <br>
+        <input type="number" name="pages" placeholder="Pages:"> <br>
+        <input type="text" name="genre" placeholder="Genre:"> <br>
+        <input type="text" name="is_lent" placeholder="Is lent (true or false):"> <br>
+        <div class="button_container">
+            <button type="submit">Add Book</button>
+            <button type="reset" onclick="window.location.href='showBooks.html'">Cancel</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
