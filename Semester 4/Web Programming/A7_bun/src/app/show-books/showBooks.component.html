@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="details">
+    <h1>Books</h1>
+
+    <input type="text" placeholder="Genre:" #genre (input)="refresh(genre.value, author.value)" />
+
+    <input type="text" placeholder="Author:" #author (input)="refresh(genre.value, author.value)" />
+
+    <button class="add" (click)="navigateToAdd()">
+      Add new Book
+    </button>
+    <p id="info">The query has been done with the genre "{{genre.value}}" and the author "{{author.value}}"</p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th> AUTHOR </th>
+        <th> TITLE </th>
+        <th> PAGES </th>
+        <th> GENRE </th>
+        <th> IS LENT </th>
+        <th> ACTIONS </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{book.author}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.pages}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.is_lent}}</td>
+        <td>
+          <button class="updateButton" (click)="navigateToUpdate(book.bookId)">Update</button>
+          <br>
+          <button class="deleteButton" (click)="navigateToDelete(book.bookId)">Delete</button>
+          <br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
