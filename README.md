@@ -3,6 +3,7 @@ Here you can find some relevant project and homework that i did at University (s
 
 <ul>
     <li>:open_file_folder: Semester 1
+        <ul>
             <li>
                 <a href="https://github.com/lung-andreea-selena/University/tree/main/Semester%201/Fundamentals%20of%20Programming">
                     :art: Fundamentals of Programming
