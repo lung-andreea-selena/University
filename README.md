@@ -73,4 +73,23 @@ Here you can find some relevant project and homework that i did at University (s
             </li>
         </ul>
     </li>
+    <li>:open_file_folder: Semester 5
+        <ul>
+            <li>
+                <a href="https://github.com/lung-andreea-selena/University/tree/main/Semester%205/Formal%20Languages%20and%20Compiler%20Design">
+                    💾 Formal Languages and Compiler Design (Python)
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/lung-andreea-selena/University/tree/main/Semester%205/Mobile">
+                    :iphone: Mobile (Kotlin and Flutter)
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/lung-andreea-selena/University/tree/main/Semester%205/Parallel%20and%20Distributed%20Programming">
+                    ↕️ Parallel and Distributed Programming (Java)
+                </a>
+            </li>
+        </ul>
+    </li>
 </ul>
