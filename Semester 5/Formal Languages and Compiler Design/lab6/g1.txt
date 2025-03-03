@@ -1,0 +1,7 @@
+N = I A B
+E = a b c $
+S = I
+P =
+I -> A B
+A -> a
+B -> b c

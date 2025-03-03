@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|c:\\users\\lung\\onedrive\\desktop\\lab4\\asyncawaitdownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|solutionrelative:asyncawaitdownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|c:\\users\\lung\\onedrive\\desktop\\lab4\\taskbaseddownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|solutionrelative:taskbaseddownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|c:\\users\\lung\\onedrive\\desktop\\lab4\\eventdrivendownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|solutionrelative:eventdrivendownloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|c:\\users\\lung\\onedrive\\desktop\\lab4\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2EB913A-016C-4FF7-8611-3A4256B12853}|Lab4.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaskBasedDownloader.cs",
+              "DocumentMoniker": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\TaskBasedDownloader.cs",
+              "RelativeDocumentMoniker": "TaskBasedDownloader.cs",
+              "ToolTip": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\TaskBasedDownloader.cs",
+              "RelativeToolTip": "TaskBasedDownloader.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAFcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T10:22:02.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AsyncAwaitDownloader.cs",
+              "DocumentMoniker": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\AsyncAwaitDownloader.cs",
+              "RelativeDocumentMoniker": "AsyncAwaitDownloader.cs",
+              "ToolTip": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\AsyncAwaitDownloader.cs",
+              "RelativeToolTip": "AsyncAwaitDownloader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T10:22:34.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EventDrivenDownloader.cs",
+              "DocumentMoniker": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\EventDrivenDownloader.cs",
+              "RelativeDocumentMoniker": "EventDrivenDownloader.cs",
+              "ToolTip": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\EventDrivenDownloader.cs",
+              "RelativeToolTip": "EventDrivenDownloader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T10:21:28.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Lung\\OneDrive\\Desktop\\Lab4\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBkAAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T10:25:01.403Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

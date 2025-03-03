@@ -1,0 +1,23 @@
+N = program compound_list statement_list statement assign_stmt if_stmt while_stmt return_stmt for_stmt io_stmt declaration array_declaration list_identifiers expression term factor condition relation compound_stmt
+E = { } + - * / % if elif else while return for read write = [ ] ( ) , ; < <= == != >= > type identifier unsigned_integer const
+S = program
+P =
+program -> compound_list
+compound_list -> statement_list
+statement_list -> statement (; statement)
+statement -> assign_stmt | if_stmt | while_stmt | return_stmt | for_stmt | io_stmt | declaration
+assign_stmt -> identifier = expression
+if_stmt -> if ( condition ) compound_stmt ( elif ( condition ) compound_stmt ) ( else compound_stmt )
+while_stmt -> while ( condition ) compound_stmt
+return_stmt -> return expression ;
+for_stmt -> for ( assign_stmt ; condition ; assign_stmt ) compound_stmt
+io_stmt -> ( read ( identifier ) ; ) | ( write ( (identifier | const) ) ; )
+declaration -> type list_identifiers [ = identifier | = const ] | array_declaration
+array_declaration -> type identifier = [ unsigned_integer ] ;
+list_identifiers -> identifier | ( identifier , list_identifiers )
+expression -> term ( ( + | - ) term)
+term -> factor ( ( *  | / ) factor)
+factor -> ( expression ) | identifier | const
+compound_stmt -> { statement_list }
+condition -> expression relation expression
+relation -> < | <= | == | != | >= | >

@@ -1,0 +1,15 @@
+from symbolTable import SymbolTable
+
+st = SymbolTable()
+st.add_symbol("pi")
+st.add_symbol("B")
+st.add_symbol("P")
+st.add_symbol("ww")
+st.add_symbol("A")
+st.add_symbol("w1")
+st.add_symbol("x321")
+st.add_symbol("cuv")
+st.print_symbol_table()
+print()
+print(st.get_index_from_symbol("w1"))
+print(st.get_symbol_from_index(3))

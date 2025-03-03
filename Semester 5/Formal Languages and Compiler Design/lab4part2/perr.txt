@@ -1,0 +1,4 @@
+integer 3n ;
+@red ( 3n ) ;
+@wdasds dss ;
+write ( 3n ) ;

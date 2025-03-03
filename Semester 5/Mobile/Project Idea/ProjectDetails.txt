@@ -1,0 +1,64 @@
+My Medical Records - a Mobile Application for personal medical records management
+
+1. Short description
+ 
+We all do a lot of things for our health like going to appointments, taking some medicine or even doing an X-ray. Unfortunately, sometimes we are losing track of 
+them and we find ourselves in the position where we are asked about important information like "When did you do your last X-ray?" or "When was the last time you 
+went to the dentist?". To solve this problem, you can use `My Medical Records` which is a personal health management tool designed to help users keep track of 
+their medical history in one convenient place. You can easily log your records like doctor appointments, medications you’ve purchased or used, lab tests and more
+while you also monitor your healthcare expenses.
+
+2. Domain details
+
+Shortly, we should focus on our subject, the medical record
+Medical record: title, type, money_spent, date, details
+
+- title: represents the most significant words refering the medical record, which will be chosen by the user
+- type: the medical record can be of type appointments, medical issues, lab tests or other.
+- money_spent: represents the amount of money that the user spent for that action
+- date: represents the date in which that medical activity took place, the user chooses the date in order to be able to log past records too 
+- details: represents any extra details about the record that might help the user
+
+3. How do we want to use this product?
+
+- When using "My Medical Records", we want to be able to add a new record, whenever something new about our health happens. So, we are thinking of a button, which
+redirects to a separate page. Here, we can enter all the necessary information for our medical record. If we are done we can save the record by pressing the "save"
+button, but if we change our mind we can press the "cancel" button.
+
+- We want to have the option of listing all the registered records together ordered by date on the main page.
+
+- People tend to forget some essential informations from a day, have grammar issues or simply found a
+better title for the record, reason why it is mandatory to give the user the possibility to modify the records.
+In this case, we consider that a button for "edit" is intuitive and by pressing it, the user will be redirected to a new page, in the same manner as for the "add" 
+option. In that page the user will be able to update any information about that record and save or cancel the changes. Such a button will exist next to each record
+in the list.
+
+- Because people sometimes do not find a specific record useful anymore, it is necessary to give them the delete option. We would like to have a button, for 
+"delete" action, next to each record in the list and a confirmation for such an action, because that button may be pressed by accident or maybe we just change our
+mind.
+
+4. How to we store our stories?
+
+- We believe that the persistence is vital to our application, so we want it to be both connected to a local database and a server. This would make "My Medical
+Record" available online and offline too. 
+For adding/updating/deleting a record we want to store the changes both ways, so they would be persisted on the server and on the local database too.
+
+- When the user is online, the data for listing our records is taken from the server (so updates are reflected immediately).
+
+- When the user is offline, the temporary data is taken from the local database.
+
+5. Whan happens if the user is offline?
+
+- In this case, we want to develop an application which lets the user to add, remove and modify entries locally.
+In this way, changes will persist only locally in the database. 
+
+When the application is used offline, all the operations performed store the information locally:
+-the entities created are stored in the local database
+-the read operation is performed on the locally saved entities
+-the update operation goes for the locally saved entities
+-the delete operation is performed on the local database
+
+- When the application goes back online, all the changes on the local database are transmitted to the server.
+ 
+- As long as there is no internet connection, the records are available only with the properties
+previously saved in the database.

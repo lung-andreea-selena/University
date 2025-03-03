@@ -1,0 +1,30 @@
+States Table:
+State 0: {('A', ('B',), 0), ("A'", ('A',), 0), ('A', ('1',), 0), ('B', ('0',), 0), ('A', ('0', 'A'), 0)}
+State 1: {('A', ('1',), 1)}
+State 2: {('A', ('B',), 1)}
+State 3: {("A'", ('A',), 1)}
+State 4: {('A', ('B',), 0), ('B', ('0',), 1), ('A', ('1',), 0), ('B', ('0',), 0), ('A', ('0', 'A'), 0), ('A', ('0', 'A'), 1)}
+State 5: {('A', ('0', 'A'), 2)}
+
+Transitions Table:
+State 0 --1--> State 1
+State 0 --B--> State 2
+State 0 --A--> State 3
+State 0 --0--> State 4
+State 4 --A--> State 5
+
+Action Table:
+State 0: {'1': ['s1'], '0': 's4'}
+State 1: {'$': ['r1']}
+State 2: {'$': ['r3']}
+State 3: {'$': 'accept'}
+State 4: {'$': ['r1'], '1': ['serror'], '0': 'serror'}
+State 5: {'$': ['r2']}
+
+Goto Table:
+State 0: {'B': 2, 'A': 3}
+State 1: {}
+State 2: {}
+State 3: {}
+State 4: {'B': 'error', 'A': 5}
+State 5: {}

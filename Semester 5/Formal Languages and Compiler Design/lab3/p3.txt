@@ -1,0 +1,7 @@
+integer sum = 0 ;
+while ( n != 0 ) {
+	integer x ;
+	read ( x ) ;
+	sum = sum + x ;
+}
+write ( sum ) ;

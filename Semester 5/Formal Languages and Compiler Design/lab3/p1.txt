@@ -1,0 +1,13 @@
+integer a ;
+integer b ;
+integer c ;
+
+if ( a > b ) {
+    if ( a > c ) {
+		write ( a ) ;
+    }
+} elif ( b > c ) {
+    write ( b ) ;
+} else {
+     write ( c ) ;
+}

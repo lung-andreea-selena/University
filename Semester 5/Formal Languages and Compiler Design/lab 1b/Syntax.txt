@@ -1,0 +1,29 @@
+program = compound_list;
+
+compound_list = statement_list;
+
+operator = "+" | "-" | "/" | "*" | "%";
+type = "integer" | "string" | "char";
+
+array_declaration = type identifier "=" "[" unsigned_integer "]" ";";
+declaration = type list_identifiers [ "=" identifier | "=" const ] | array_declaration;
+
+list_identifiers = identifier | (identifier "," list_identifiers);
+
+expression = term (("+" | "-") term)*;
+term = factor (("*" | "/") factor)*;
+factor = "(" expression ")" | identifier | const;
+
+assign_stmt = identifier "=" expression;
+if_stmt = "if" "(" condition ")" compound_stmt ("elif" "(" condition ")" compound_stmt)* ("else" compound_stmt)?;
+while_stmt = "while" "(" condition ")" compound_stmt;
+return_stmt = "return" expression ";";
+for_stmt = "for" "(" assign_stmt ";" condition ";" assign_stmt ")" compound_stmt;
+io_stmt = ("read" "(" identifier ")" ";") | ("write" "(" (identifier | const) ")" ";");
+
+statement = assign_stmt | if_stmt | while_stmt | return_stmt | for_stmt | io_stmt | declaration;
+statement_list = statement (";" statement)*;
+compound_stmt = "{" statement_list "}";
+
+condition = expression relation expression;
+relation = "<" | "<=" | "==" | "!=" | ">=" | ">";
